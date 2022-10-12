@@ -1,6 +1,7 @@
 package funwithnumbersarray;
 
 import java.util.Random;
+import java.util.Arrays;
 
 public class FunWithNumbers {
     public static int count;
@@ -73,14 +74,38 @@ public class FunWithNumbers {
     public static void clear() {
         count = 0;
     }
+    /* selection sort
+     * on every pass, select the next smallest value to join the sorted
+     * part of the list
+     */
+    public static void sort() {
+    	int theMin, minPos, temp;
+    	for (int i = 0; i < count; i++) {
+    		theMin = nums[i];
+    		minPos = i;
+    		for (int j = i+1; j < count; j++) {
+    			if (nums[j] < theMin) {
+    				theMin = nums[j];
+    				minPos = j;
+    			}
+    		}
+    		temp = nums[i];
+    		nums[i] = theMin;
+    		nums[minPos] = temp;
+    	}
+    }
     public static void main(String[] args) {
         nums = createOriginalList();
-        System.out.println("Insert 17 at position 3");
+   //     System.out.println("Insert 17 at position 3");
         insert(17,3);
-        print();
-        System.out.println("Append 24");
+ //       print();
+  //      System.out.println("Append 24");
         append(24);
         print();
+        System.out.println("Now sorted");
+        Arrays.sort(nums,0,count);
+        print();
+        /*
         System.out.println("Remove value at position 2");
         remove(2);
         print();
@@ -94,6 +119,7 @@ public class FunWithNumbers {
         System.out.println("Clear the list");
         clear();
         print();
+        */
     }
 }
 
