@@ -10,6 +10,7 @@ public class App {
 		y = sc.nextDouble();
 		rad = sc.nextDouble();
 		Circle c = new Circle(x,y,rad);
+		c.setRadius(2*c.getRadius()); // double the radius
 		double area = c.findArea();
 		double circumference = c.findCircumference();
 		System.out.printf("Area = %.2f, Circ = %.2f\n", area, circumference);

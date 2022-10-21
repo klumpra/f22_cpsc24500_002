@@ -1,0 +1,6 @@
+Atlanta Dream	14	22
+Chicago Sky	26	10
+Indiana Fever	5	31
+Washington Mystics	22	14
+Connecticut Sun	25	11
+New York Liberty	16	20
