@@ -68,25 +68,25 @@ public class App {
 	    int westPos = 0; // where we are in the west conf
 	    double eastPct, westPct;  // winning percentages of the teams we're looking at
 	    int fillPos = 0;   // the number of the slot in the combined list result we are filling
-	    while (eastPos < east.length && westPos < west.length) {
+	    while (eastPos < east.length && westPos < west.length) {  // while I haven't run out of teams in either east or west
 	        eastPct = getWinningPercentage(east[eastPos]);
 	        westPct = getWinningPercentage(west[westPos]);
 	        if (eastPct >= westPct) {
 	            result[fillPos] = east[eastPos];
-	            eastPos = eastPos + 1;
+	            eastPos = eastPos + 1;  // eliminate from further consideration
 	        } else {
 	            result[fillPos] = west[westPos];
 	            westPos = westPos + 1;
 	        }
-	        fillPos = fillPos + 1;
+	        fillPos = fillPos + 1;  //  get ready for next addition to result array
 	    }
 	    if (eastPos < east.length) {
-	        for (int i = eastPos; i < east.length; i++) {
+	        for (int i = eastPos; i < east.length; i++) { // adding the remaining teams from the east
 	            result[fillPos] = east[eastPos];
 	            fillPos = fillPos + 1;
 	            eastPos = eastPos + 1;
 	        }
-	    } else {
+	    } else {    // add the rest of the west teams
 	        for (int i = westPos; i < west.length; i++) {
 	            result[fillPos] = west[westPos];
 	            fillPos = fillPos + 1;
@@ -107,7 +107,7 @@ public class App {
 		String[] westTeams = new String[6];
 		String[] combined;   // will be filled with teams from the two conferences sorted by winning pct
 		int choice;
-		int eastCount = 0, westCount = 0;
+		int eastCount = 0, westCount = 0; // how many eastern and western teams read so far
 		try {
 			Scanner fsc = new Scanner(new File(fname));
 			while (fsc.hasNextLine()) {
@@ -116,7 +116,7 @@ public class App {
 					if (line.startsWith("Conference")) {
 						parts = line.split(" ");
 						conference = parts[1];
-					} else {
+					} else {   // a line that defines a team
 						if (conference.equals("Eastern")) {
 							eastTeams[eastCount] = line;
 							eastCount++;
