@@ -37,6 +37,10 @@ public class Employee extends Person {
 		return hoursWorked * payRate;
 	}
 	@Override
+	public String getType() {
+		return "employee";
+	}
+	@Override
 	public String toString() {
 //		return String.format("%s\t%s\t%.2f\t%.2f",getFirstName(),getLastName(),hoursWorked,payRate);
 		return String.format("%s\t%.2f\t%.2f", super.toString(),hoursWorked,payRate);

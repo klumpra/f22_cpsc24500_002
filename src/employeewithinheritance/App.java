@@ -17,5 +17,6 @@ public class App {
 		for (Person person : persons) {  // polymorphism - access specific functionality from a superclass variable
 			System.out.println(person);
 		}
+
 	}
 }

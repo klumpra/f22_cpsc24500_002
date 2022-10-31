@@ -30,6 +30,10 @@ public class Customer extends Person {
 		setShippingAddress(shipTo);
 	}
 	@Override
+	public String getType() {
+		return "customer";
+	}
+	@Override
 	public String toString() {
 		return String.format("%s\t%.2f\t%s", super.toString(), annualSalary, shippingAddress);
 	}

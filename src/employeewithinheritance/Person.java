@@ -1,6 +1,6 @@
 package employeewithinheritance;
 
-public class Person {
+public abstract class Person {
 	private String firstName;
 	private String lastName;
 	public String getFirstName() {
@@ -22,8 +22,10 @@ public class Person {
 		setFirstName(first);
 		setLastName(last);
 	}
+	public abstract String getType();
+	
 	@Override
 	public String toString() {
-		return String.format("%s\t%s", firstName, lastName);
+		return String.format("%s\t%s\t%s", getType(), firstName, lastName);
 	}
 }
