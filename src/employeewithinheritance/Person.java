@@ -1,6 +1,6 @@
 package employeewithinheritance;
 
-public abstract class Person {
+public abstract class Person implements Comparable<Person> {
 	private String firstName;
 	private String lastName;
 	public String getFirstName() {
@@ -27,5 +27,11 @@ public abstract class Person {
 	@Override
 	public String toString() {
 		return String.format("%s\t%s\t%s", getType(), firstName, lastName);
+	}
+	@Override
+	public int compareTo(Person other) {
+		String myLastFirst = lastName+firstName;
+		String otherLastFirst = other.lastName+other.firstName;
+		return myLastFirst.compareTo(otherLastFirst);
 	}
 }
