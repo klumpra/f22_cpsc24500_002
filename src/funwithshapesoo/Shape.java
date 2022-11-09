@@ -1,6 +1,7 @@
 package funwithshapesoo;
-
-public abstract class Shape implements Comparable<Shape>  {
+import java.io.Serializable;
+@SuppressWarnings("Unchecked")
+public abstract class Shape implements Comparable<Shape>, Serializable  {
 	// location of the shape in space
 	private Point origin;    // ownership - object within another object
 	public double getX() {

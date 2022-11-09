@@ -13,12 +13,29 @@ public class App {
 		shapes.add(new Circle(5,8,6));
 		Collections.sort(shapes);
 		ShapeWriter.writeToScreen(shapes);
+		/*
 		System.out.print("Let's write to a file. Enter filename: ");
 		String fileName = sc.nextLine();
-		if (ShapeWriter.writeToFile(shapes, fileName)) {
+		if (ShapeWriter.writeToText(shapes, fileName)) {
 			System.out.println("Success!");
 		} else {
 			System.out.println("Failure!");
 		}
+		System.out.println("Now clear the list:");
+		shapes.clear();
+		ShapeWriter.writeToScreen(shapes);
+		System.out.println("Now going to read them back in ...");
+		shapes = ShapeReader.readFromText(fileName);
+		ShapeWriter.writeToScreen(shapes);
+		*/
+		System.out.println("Now write to binary. Enter filename: ");
+		String fileName = sc.nextLine();
+		if (ShapeWriter.writeToBinary(shapes, fileName)) {
+			System.out.println("Written to binary successfully!");
+		} else {
+			System.out.println("Boo. Hiss. Drats.");
+		}
+		ArrayList<Shape> read = ShapeReader.readFromBinary(fileName);
+		ShapeWriter.writeToScreen(shapes);
 	}
 }

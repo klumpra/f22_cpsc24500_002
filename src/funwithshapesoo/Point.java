@@ -1,6 +1,7 @@
 package funwithshapesoo;
-
-public class Point {
+import java.io.Serializable;
+@SuppressWarnings("unchecked")
+public class Point implements Serializable {
 	private double x;
 	private double y;
 	public double getX() {
