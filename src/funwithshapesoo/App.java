@@ -28,6 +28,7 @@ public class App {
 		shapes = ShapeReader.readFromText(fileName);
 		ShapeWriter.writeToScreen(shapes);
 		*/
+		/*
 		System.out.println("Now write to binary. Enter filename: ");
 		String fileName = sc.nextLine();
 		if (ShapeWriter.writeToBinary(shapes, fileName)) {
@@ -37,5 +38,17 @@ public class App {
 		}
 		ArrayList<Shape> read = ShapeReader.readFromBinary(fileName);
 		ShapeWriter.writeToScreen(shapes);
+		*/
+		System.out.println("Now write to xml. Enter filename: ");
+		String fileName = sc.nextLine();
+		ArrayList<Shape> readFromXML;
+		if (ShapeWriter.writeToXML(shapes,fileName)) {
+			System.out.println("Wrote to XML successfully.");
+			System.out.println("Now going to read back in ...");
+			readFromXML = ShapeReader.readFromXML(fileName);
+			ShapeWriter.writeToScreen(readFromXML);
+		} else {
+			System.out.println("Boo. That failed.");
+		}
 	}
 }

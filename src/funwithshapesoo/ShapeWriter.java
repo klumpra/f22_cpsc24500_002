@@ -1,4 +1,5 @@
 package funwithshapesoo;
+import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -6,6 +7,8 @@ import java.io.ObjectOutputStream;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.beans.XMLEncoder;
+
 // view class for the model established Shape
 public class ShapeWriter {
 	public static void writeToScreen(ArrayList<Shape> shapes) {
@@ -31,6 +34,16 @@ public class ShapeWriter {
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(shapes);
 			oos.close();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		}
+	}
+	public static boolean writeToXML(ArrayList<Shape> shapes, String fname) {
+		try {
+			XMLEncoder enc = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(new File(fname))));
+			enc.writeObject(shapes);
+			enc.close();
 			return true;
 		} catch (Exception ex) {
 			return false;
