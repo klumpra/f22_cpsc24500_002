@@ -1,5 +1,6 @@
 package funwithshapesoo;
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 @SuppressWarnings("Unchecked")
 public abstract class Shape implements Comparable<Shape>, Serializable  {
 	// location of the shape in space
@@ -41,4 +42,12 @@ public abstract class Shape implements Comparable<Shape>, Serializable  {
 			return 0;
 		}
 	}
+    public LinkedHashMap<String,String> mapValues() {
+        LinkedHashMap<String,String> result = new LinkedHashMap<String,String>();
+        result.put("shapetype", getShapeType());
+        result.put("x", String.valueOf(getX()));
+        result.put("y", String.valueOf(getY()));
+        return result;
+    }
+
 }

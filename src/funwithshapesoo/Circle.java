@@ -1,5 +1,7 @@
 package funwithshapesoo;
 
+import java.util.LinkedHashMap;
+
 public class Circle extends Shape {
 	private double radius;
 	public double getRadius() {
@@ -36,4 +38,11 @@ public class Circle extends Shape {
 	public String toString() {
 		return String.format("%s\t%.2f",super.toString(),radius);
 	}
+    @Override
+    public LinkedHashMap<String,String> mapValues() {
+        LinkedHashMap<String,String> result = super.mapValues();
+        result.put("radius", String.valueOf(radius));
+        return result;
+    }
+
 }

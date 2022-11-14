@@ -4,10 +4,15 @@ import java.beans.XMLDecoder;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
+
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class ShapeReader {
 	public static ArrayList<Shape> readFromText(String fname) {
@@ -64,4 +69,27 @@ public class ShapeReader {
 			return null;
 		}
 	}
+    public static ArrayList<Shape> readFromJSON(String fname) {
+        try {
+            ArrayList<Shape> result = new ArrayList<Shape>();
+            FileReader reader = new FileReader(new File(fname));
+            JSONParser parser = new JSONParser();
+            JSONArray arr = (JSONArray)parser.parse(reader);
+            Iterator<JSONObject> itr = arr.iterator();
+            JSONObject obj;
+            Shape s;
+            while (itr.hasNext()) {
+                obj = itr.next();
+                s = ShapeFactory.buildFromJSON(obj);
+                if (s != null) {
+                    result.add(s);
+                }
+            }
+            reader.close();
+            return result;
+        } catch (Exception ex) {
+            return null;
+        }
+    }
 }
+

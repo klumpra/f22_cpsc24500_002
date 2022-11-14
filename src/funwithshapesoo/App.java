@@ -39,6 +39,7 @@ public class App {
 		ArrayList<Shape> read = ShapeReader.readFromBinary(fileName);
 		ShapeWriter.writeToScreen(shapes);
 		*/
+		/*
 		System.out.println("Now write to xml. Enter filename: ");
 		String fileName = sc.nextLine();
 		ArrayList<Shape> readFromXML;
@@ -50,5 +51,17 @@ public class App {
 		} else {
 			System.out.println("Boo. That failed.");
 		}
-	}
+		*/
+        System.out.println("Now write to json...");
+        System.out.print("Enter filename: ");
+        String fileName = sc.nextLine();
+        if (ShapeWriter.writeToJSON(fileName, shapes)) {
+            System.out.println("Wrote to json successfully.");
+        } else {
+            System.out.println("Could not write to json");
+        }
+        System.out.println("Now will read back from json...");
+        ArrayList<Shape> readShapesJSON = ShapeReader.readFromJSON(fileName);
+        ShapeWriter.writeToScreen(readShapesJSON);
+    }
 }
